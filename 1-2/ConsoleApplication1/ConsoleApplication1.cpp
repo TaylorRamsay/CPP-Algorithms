@@ -7,6 +7,12 @@
 using namespace std;
 
 
+/* ****** TODO:
+			- Add separators/descriptions for each algorithm
+			- Create readme that updates when new algorithms are added
+
+   ******			*/
+
 // 1-2
 int permutationCheck(string a, string b) {
 	if (a.length() != b.length()) {
@@ -108,9 +114,92 @@ bool oneOff(const string& one, const string& two) {
 }
 
 
+// 1-8 Zero Matrix
+	// Write an algorithm such that if an element in an M x N matrix is 0, it's entire row and column are set to 0
+
+void nullifyRow(int matrix[4][5], int row) {
+	for (int j = row; j < 5; j++) {
+		matrix[row][j] = 0;
+	}
+}
+
+void nullifyColumn(int matrix[4][5], int column) {
+	for (int i = column; i < 4; i++) {
+		matrix[i][column] = 0;
+	}
+}
+
+void printMatrix(int matrix[4][5]) {
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 5; j++) {
+			cout << matrix[i][j];
+		}
+		cout << endl;
+	}
+	cout << "\n\n";
+}
+
+void zeroMatrix(int matrix[4][5]) {
+	bool rowHasZero = false;
+	bool columnHasZero = false;
+
+	for (int j = 0; j < 5; j++) {
+		if (matrix[0][j] == 0)
+		{
+			rowHasZero = true;
+			break;
+		}
+	}
+
+	for (int i = 0; i < 4; i++) {
+		if (matrix[i][0] == 0) {
+			columnHasZero = true;
+			break;
+		}
+	}
+
+	for (int i = 1; i < 4; i++) {
+		for (int j = 1; j < 5; j++) {
+			if (matrix[i][j] == 0) {
+				matrix[i][0] = 0;
+				matrix[0][j] = 0;
+			}
+		}
+	}
+
+	for (int i = 1; i < 4; i++) {
+		if (matrix[i][0] == 0) {
+			nullifyRow(matrix, i);
+		}
+	}
+
+	for (int j = 1; j < 5; j++) {
+		if (matrix[0][j] == 0) {
+			nullifyColumn(matrix, j);
+		}
+	}
+
+
+	if (rowHasZero) {
+		nullifyRow(matrix, 0);
+	}
+	
+	if (columnHasZero) {
+		nullifyColumn(matrix, 0);
+	}
+
+	printMatrix(matrix);
+}
+
 
 int main() {
-	oneOff("peep", "beep");
-	oneOff("peep", "peeld");
-	oneOff("peep", "pep");
+
+	int matrix[4][5] = { {1, 2, 3, 4, 5},
+						 {6, 0, 8, 0, 1}, 
+						 {0, 3, 4, 5, 6},
+						 {7, 8, 9, 1, 2}};
+	
+	printMatrix(matrix);
+
+	zeroMatrix(matrix);
 }
