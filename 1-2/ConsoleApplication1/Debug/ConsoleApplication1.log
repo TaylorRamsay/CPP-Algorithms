@@ -1,0 +1,5 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\FSK8475\source\repos\1-2\ConsoleApplication1\ConsoleApplication1.cpp(63,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\FSK8475\source\repos\1-2\ConsoleApplication1\ConsoleApplication1.cpp(81,18): warning C4018: '<': signed/unsigned mismatch
+C:\Users\FSK8475\source\repos\1-2\ConsoleApplication1\ConsoleApplication1.cpp(81,45): warning C4018: '<': signed/unsigned mismatch
+  ConsoleApplication1.vcxproj -> C:\Users\FSK8475\source\repos\1-2\Debug\ConsoleApplication1.exe
