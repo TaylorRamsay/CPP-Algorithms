@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <list>
 #include <unordered_map>
 #include <algorithm>
 
@@ -192,14 +193,33 @@ void zeroMatrix(int matrix[4][5]) {
 }
 
 
+// ******** Linked List Algorithms ********
+
+// 2.1 Remove Duplicates: Remove duplicates from an unsorted linked list
+
+list<int> removeDuplicate(list<int> x) {
+
+
+
+
+	return x;
+}
+
+
+
+
 int main() {
 
-	int matrix[4][5] = { {1, 2, 3, 4, 5},
+	/*int matrix[4][5] = {{1, 2, 3, 4, 5},
 						 {6, 0, 8, 0, 1}, 
 						 {0, 3, 4, 5, 6},
 						 {7, 8, 9, 1, 2}};
 	
 	printMatrix(matrix);
-
 	zeroMatrix(matrix);
+	*/
+
+
+
+
 }
