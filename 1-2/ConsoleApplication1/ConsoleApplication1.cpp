@@ -195,16 +195,35 @@ void zeroMatrix(int matrix[4][5]) {
 
 // ******** Linked List Algorithms ********
 
+class Node {
+public:
+	int data;
+	Node* prev;
+	Node* next;
+};
+
+
 // 2.1 Remove Duplicates: Remove duplicates from an unsorted linked list
 
-list<int> removeDuplicate(list<int> x) {
+void removeDuplicate(list<int> x) {
+	unordered_map<int, int> items;
+	list<int>::iterator cur = x.begin();
+	list<int>::iterator prev;
+
+	while (cur != x.end()) {
+		if (items.find(*cur) != items.end()) {
+			items.emplace(*cur, 1);
+			prev = cur;
+			cur++;
+		}
+		else {
+
+		}
+	}
 
 
 
-
-	return x;
 }
-
 
 
 
@@ -219,7 +238,19 @@ int main() {
 	zeroMatrix(matrix);
 	*/
 
+	int intArray[] = { 10, 5, 5, 6, 3, 2, 10, 3, 5, 6, 7, 8, 9, 0, 1, 4, 4, 1, 0 };
+	list<int> unsortedList(intArray, intArray + sizeof(intArray) / sizeof(int));
+	
+	cout << "Before duplicate removal: ";
+	for (list<int>::iterator it = unsortedList.begin(); it != unsortedList.end(); it++) {
+		cout << *it << ' ';
+	}
 
+	removeDuplicate(unsortedList);
 
+	cout << "\n\nAfter duplicate removal: ";
+	for (list<int>::iterator it = unsortedList.begin(); it != unsortedList.end(); it++) {
+		cout << *it << ' ';
+	}
 
 }

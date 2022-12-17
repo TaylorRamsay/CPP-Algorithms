@@ -1,5 +1,5 @@
 ﻿  ConsoleApplication1.cpp
-C:\Users\FSK8475\Documents\GitHub\C---Algorithms\1-2\ConsoleApplication1\ConsoleApplication1.cpp(67,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\FSK8475\Documents\GitHub\C---Algorithms\1-2\ConsoleApplication1\ConsoleApplication1.cpp(85,18): warning C4018: '<': signed/unsigned mismatch
-C:\Users\FSK8475\Documents\GitHub\C---Algorithms\1-2\ConsoleApplication1\ConsoleApplication1.cpp(85,45): warning C4018: '<': signed/unsigned mismatch
+C:\Users\FSK8475\Documents\GitHub\C---Algorithms\1-2\ConsoleApplication1\ConsoleApplication1.cpp(68,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\FSK8475\Documents\GitHub\C---Algorithms\1-2\ConsoleApplication1\ConsoleApplication1.cpp(86,18): warning C4018: '<': signed/unsigned mismatch
+C:\Users\FSK8475\Documents\GitHub\C---Algorithms\1-2\ConsoleApplication1\ConsoleApplication1.cpp(86,45): warning C4018: '<': signed/unsigned mismatch
   ConsoleApplication1.vcxproj -> C:\Users\FSK8475\Documents\GitHub\C---Algorithms\1-2\Debug\ConsoleApplication1.exe
