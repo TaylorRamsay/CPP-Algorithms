@@ -199,30 +199,45 @@ class Node {
 public:
 	int data;
 	Node* prev;
-	Node* next;
+	Node* next = nullptr;
 };
+
+void insertFront(Node*& head, int data) {
+	Node* newNode = new Node;
+	newNode->data = data;
+	newNode->next = head;
+	head = newNode;
+}
+
+void print(Node* head) {
+	while (head) {
+		cout << head->data << " ";
+		head = head->next;
+	}
+	cout << "\n";
+}
 
 
 // 2.1 Remove Duplicates: Remove duplicates from an unsorted linked list
 
-void removeDuplicate(list<int> x) {
-	unordered_map<int, int> items;
-	list<int>::iterator cur = x.begin();
-	list<int>::iterator prev;
-
-	while (cur != x.end()) {
-		if (items.find(*cur) != items.end()) {
-			items.emplace(*cur, 1);
-			prev = cur;
-			cur++;
+void removeDuplicate(Node* & head) {
+	// start inserting elements into unordered_map
+	unordered_map<int, int> node_table;
+	Node* prev = head;
+	Node* curr = head->next;
+	node_table[head->data] = 1;
+	// while curr has not reached the end of the list
+	while (curr != nullptr) {
+		while (curr && node_table.find(curr->data) != node_table.end()) {
+			curr = curr->next;
 		}
-		else {
-
+		prev->next = curr;
+		prev = curr;
+		if (curr) {
+			node_table[curr->data] = 1;
+			curr = curr->next;
 		}
 	}
-
-
-
 }
 
 
@@ -238,19 +253,14 @@ int main() {
 	zeroMatrix(matrix);
 	*/
 
-	int intArray[] = { 10, 5, 5, 6, 3, 2, 10, 3, 5, 6, 7, 8, 9, 0, 1, 4, 4, 1, 0 };
-	list<int> unsortedList(intArray, intArray + sizeof(intArray) / sizeof(int));
-	
-	cout << "Before duplicate removal: ";
-	for (list<int>::iterator it = unsortedList.begin(); it != unsortedList.end(); it++) {
-		cout << *it << ' ';
+	Node* head = nullptr;
+	for (int i = 0; i < 10; i++) {
+		insertFront(head, rand() % 5 + 1);
 	}
+	print(head);
 
-	removeDuplicate(unsortedList);
+	removeDuplicate(head);
 
-	cout << "\n\nAfter duplicate removal: ";
-	for (list<int>::iterator it = unsortedList.begin(); it != unsortedList.end(); it++) {
-		cout << *it << ' ';
-	}
+	print(head);
 
 }
