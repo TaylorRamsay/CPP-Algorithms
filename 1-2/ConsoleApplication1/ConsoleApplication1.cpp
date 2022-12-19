@@ -242,6 +242,24 @@ void removeDuplicate(Node* & head) {
 
 
 
+// 2.2 Remove kth element from singly-linked list
+
+void removeKthElement(Node* & head, int k) {
+	Node* prev = head;
+	Node* curr = head->next;
+	if (k == 1) {
+		head = curr;
+	}
+
+	for (int i = 2; i < k; i++) {
+		prev = prev->next;
+		curr = curr->next;
+	}
+	//prev->next = curr->next;
+}
+
+
+
 int main() {
 
 	/*int matrix[4][5] = {{1, 2, 3, 4, 5},
@@ -259,7 +277,7 @@ int main() {
 	}
 	print(head);
 
-	removeDuplicate(head);
+	removeKthElement(head, 2);
 
 	print(head);
 
