@@ -255,7 +255,7 @@ void removeKthElement(Node* & head, int k) {
 		prev = prev->next;
 		curr = curr->next;
 	}
-	//prev->next = curr->next;
+	prev->next = curr->next;
 }
 
 
@@ -277,7 +277,7 @@ int main() {
 	}
 	print(head);
 
-	removeKthElement(head, 2);
+	removeKthElement(head, 10);
 
 	print(head);
 
