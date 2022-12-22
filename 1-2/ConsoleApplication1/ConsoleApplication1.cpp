@@ -242,7 +242,7 @@ void removeDuplicate(Node* & head) {
 
 
 
-// 2.2 Remove kth element from singly-linked list
+// 2.2/3 Remove kth element from singly-linked list
 
 void removeKthElement(Node* & head, int k) {
 	Node* prev = head;
@@ -256,6 +256,31 @@ void removeKthElement(Node* & head, int k) {
 		curr = curr->next;
 	}
 	prev->next = curr->next;
+}
+
+
+// 2.4 Partition a linked list around a value x
+
+Node* partition(Node* node, int x) {
+	Node* head = node;
+	Node* tail = node;
+
+
+	while (node != nullptr) {
+		Node* next = node->next;
+		if (node->data < x) {
+			node->next = head;
+			head = node;
+		}
+		else {
+			tail->next = node;
+			tail = node;
+		}
+		node = next;
+	}
+	tail->next = nullptr;
+
+	return head;
 }
 
 
@@ -277,8 +302,6 @@ int main() {
 	}
 	print(head);
 
-	removeKthElement(head, 10);
-
-	print(head);
+	print(partition(head,5));
 
 }
