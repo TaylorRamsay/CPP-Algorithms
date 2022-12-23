@@ -198,18 +198,27 @@ void zeroMatrix(int matrix[4][5]) {
 class Node {
 public:
 	int data;
-	Node* prev;
+	Node* prev = nullptr;
 	Node* next = nullptr;
+	Node* head = nullptr;
+	Node* tail = nullptr;
 };
 
-void insertFront(Node*& head, int data) {
+void insertFront(Node* &head, int data) {
 	Node* newNode = new Node;
 	newNode->data = data;
 	newNode->next = head;
+	if (head != nullptr) {
+		head->prev = newNode;
+	}
+	else {
+		newNode->tail = head;
+	}
 	head = newNode;
 }
 
 void print(Node* head) {
+	cout << head->tail << "\n\n";
 	while (head) {
 		cout << head->data << " ";
 		head = head->next;
@@ -284,6 +293,16 @@ Node* partition(Node* node, int x) {
 }
 
 
+// 2.5 Sum Lists: Two numbers are represented as a linked list in reverse order, Write a function that adds the 
+//					two numbers and returns the sum as a linked list. Return the results in reverse order
+
+Node* sumLists(Node* numOne, Node* numTwo) {
+	Node* sum = new Node;
+
+
+
+	return sum;
+}
 
 int main() {
 
@@ -296,12 +315,16 @@ int main() {
 	zeroMatrix(matrix);
 	*/
 
-	Node* head = nullptr;
-	for (int i = 0; i < 10; i++) {
-		insertFront(head, rand() % 5 + 1);
-	}
-	print(head);
+	Node* numOne = nullptr;
+	Node* numTwo = nullptr;
 
-	print(partition(head,5));
+	srand(time(NULL));
+	for (int i = 0; i < 3; i++) {
+		insertFront(numOne, rand() % 5 + 1);
+		insertFront(numTwo, rand() % 5 + 1);
+	}
+	print(numOne);
+	print(numTwo);
+
 
 }
