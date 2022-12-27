@@ -200,8 +200,6 @@ public:
 	int data;
 	Node* prev = nullptr;
 	Node* next = nullptr;
-	Node* head = nullptr;
-	Node* tail = nullptr;
 };
 
 void insertFront(Node* &head, int data) {
@@ -211,14 +209,21 @@ void insertFront(Node* &head, int data) {
 	if (head != nullptr) {
 		head->prev = newNode;
 	}
-	else {
-		newNode->tail = head;
-	}
 	head = newNode;
 }
 
+void insertBack(Node* &head, int data) {
+	Node* temp = head;
+	Node* newNode = new Node;
+	newNode->data = data;
+	while (temp->next != nullptr) {
+		temp = temp->next;
+	}
+	temp->next = newNode;
+	newNode->prev = temp;
+}
+
 void print(Node* head) {
-	cout << head->tail << "\n\n";
 	while (head) {
 		cout << head->data << " ";
 		head = head->next;
@@ -296,10 +301,36 @@ Node* partition(Node* node, int x) {
 // 2.5 Sum Lists: Two numbers are represented as a linked list in reverse order, Write a function that adds the 
 //					two numbers and returns the sum as a linked list. Return the results in reverse order
 
+int extractNum(Node* numNode) {
+	int sum = 0;
+	int mult = 1;
+	while (numNode) {
+		sum += numNode->data * mult;
+		mult *= 10;
+		numNode = numNode->next;
+	}
+	return sum;
+}
+
+void intToList(Node* list, int num) {
+
+	list->data = num % 10;
+
+	while (num / 10 != 0) {
+		num /= 10;
+		insertBack(list, (num % 10));
+	}
+}
+
 Node* sumLists(Node* numOne, Node* numTwo) {
 	Node* sum = new Node;
 
+	int x = extractNum(numOne);
+	int y = extractNum(numTwo);
 
+	int z = x + y;
+
+	intToList(sum, z);
 
 	return sum;
 }
@@ -307,10 +338,10 @@ Node* sumLists(Node* numOne, Node* numTwo) {
 int main() {
 
 	/*int matrix[4][5] = {{1, 2, 3, 4, 5},
-						 {6, 0, 8, 0, 1}, 
+						 {6, 0, 8, 0, 1},
 						 {0, 3, 4, 5, 6},
 						 {7, 8, 9, 1, 2}};
-	
+
 	printMatrix(matrix);
 	zeroMatrix(matrix);
 	*/
@@ -323,8 +354,12 @@ int main() {
 		insertFront(numOne, rand() % 5 + 1);
 		insertFront(numTwo, rand() % 5 + 1);
 	}
+
 	print(numOne);
 	print(numTwo);
 
+	Node* result = sumLists(numOne, numTwo);
+
+	print(result);
 
 }
