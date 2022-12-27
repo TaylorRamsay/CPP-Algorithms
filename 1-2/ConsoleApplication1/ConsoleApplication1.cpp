@@ -335,6 +335,32 @@ Node* sumLists(Node* numOne, Node* numTwo) {
 	return sum;
 }
 
+
+// 2.6 Check if a list is a palindrome
+Node* reverseList(Node* head) {
+	Node* reverse = nullptr;
+	while (head != nullptr) {
+		insertFront(reverse, head->data);
+		head = head->next;
+	}
+	return reverse;
+}
+
+bool isPalindrome(Node* head) {
+	Node* reverse = reverseList(head);
+	
+	while (head) {
+		if (head->data != reverse->data) {
+			return false;
+		}
+		head = head->next;
+		reverse = reverse->next;
+	}
+
+
+	return true;
+}
+
 int main() {
 
 	/*int matrix[4][5] = {{1, 2, 3, 4, 5},
@@ -356,10 +382,7 @@ int main() {
 	}
 
 	print(numOne);
-	print(numTwo);
-
-	Node* result = sumLists(numOne, numTwo);
-
-	print(result);
+	cout << isPalindrome(numOne);
+	
 
 }
